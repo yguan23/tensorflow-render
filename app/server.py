@@ -88,14 +88,17 @@ async def analyze(request):
     img = img.convert('RGB')
     img = img.resize((img_size, img_size), Image.NEAREST)
     img = np.array(img)
+    np.array(img) = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
     img = preprocess_input( np.array([img]) )
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
+    
 #     data_list = pd.DataFrame({"img_path":img_list, "label_name":data_label, "types":data_types})
-    img['label_list'] = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
-    img['label_list'] = str(prediction).map(img)
-    return JSONResponse({'result': img['label_list']})
-#     return JSONResponse({'result': str(prediction)})
+#     img['label_list'] = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
+#     img['label_list'] = str(prediction).map(img)
+#     return JSONResponse({'result': img['label_list']})
+
+    return JSONResponse({'result': str(prediction)})
 
 
 if __name__ == '__main__':
