@@ -24,6 +24,7 @@ model_file_name = 'app/models/best_model.h5'
 classes = ['0', '1', '2', '3', '4']
 # classes = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
 path = Path(__file__).parent
+# data_list["label"] = classes["label_name"].map(class_map)
 img_size = 224
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
@@ -88,11 +89,12 @@ async def analyze(request):
     img = img.resize((img_size, img_size), Image.NEAREST)
     img = np.array(img)
     img = preprocess_input( np.array([img]) )
-    img = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
-#     prediction = classes.argmax()
-    return JSONResponse({'result': str(prediction)})
+    img_list['label_list'] = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
+    img_list['label_list'] = img.map(str(prediction))
+    return JSONResponse({'result': img_list['label_list']})
+#     return JSONResponse({'result': str(prediction)})
 
 
 if __name__ == '__main__':
