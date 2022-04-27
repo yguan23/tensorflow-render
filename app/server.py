@@ -109,7 +109,7 @@ async def analyze(request):
     else:
         str result = '金桔'
         
-    return JSONResponse({'result': result })
+    return JSONResponse({'result': str(prediction), ' ': result})
 
 
 if __name__ == '__main__':
