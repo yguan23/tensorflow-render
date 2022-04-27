@@ -88,7 +88,7 @@ async def analyze(request):
     img = img.convert('RGB')
     img = img.resize((img_size, img_size), Image.NEAREST)
     img = np.array(img)
-    np.array(img) = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
+#     np.array(img) = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
     img = preprocess_input( np.array([img]) )
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
