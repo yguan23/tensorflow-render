@@ -89,7 +89,6 @@ async def analyze(request):
     img = img.convert('RGB')
     img = img.resize((img_size, img_size), Image.NEAREST)
     img = np.array(img)
-#     np.array(img) = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
     img = preprocess_input( np.array([img]) )
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
@@ -101,18 +100,23 @@ async def analyze(request):
 
     if str(prediction) == 0:
         result == '檸檬'
+        print('which is ',result)
     elif str(prediction) == 1:
         result == '柑'
+        print('which is ',result)
     elif str(prediction) == 2:
         result == '葡萄柚'
+        print('which is ',result)
     elif str(prediction) == 3:
         result == '柳丁'
+        print('which is ',result)
     else:
         result == '金桔'
+        print('which is ',result)
 
     return JSONResponse({'result': str(prediction) })
     
-print('which is ',result)
+# print('which is ',result)
 
 
 if __name__ == '__main__':
