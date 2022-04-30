@@ -22,10 +22,8 @@ model_config_name = 'app/models/model.config'
 model_file_name = 'app/models/best_model.h5'
 
 classes = ['0', '1', '2', '3', '4']
-# result = ''
 # classes = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
 path = Path(__file__).parent
-# data_list["label"] = classes["label_name"].map(class_map)
 img_size = 224
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
@@ -98,24 +96,23 @@ async def analyze(request):
 #     img['label_list'] = str(prediction).map(img)
 #     return JSONResponse({'result': img['label_list']})
 
-    if str(prediction) == 0:
-#         result = '檸檬'
-        return JSONResponse({'result': str(prediction), 'which is': '檸檬'})
-    elif str(prediction) == 1:
-#         result = '柑'
-        return JSONResponse({'result': str(prediction), 'which is': '柑'})
-    elif str(prediction) == 2:
-#         result = '葡萄柚'
-        return JSONResponse({'result': str(prediction), 'which is': '葡萄柚'})
-    elif str(prediction) == 3:
-#         result = '柳丁'
-        return JSONResponse({'result': str(prediction), 'which is': '柳丁'})
-    else:
-#         result = '金桔'
-        return JSONResponse({'result': str(prediction), 'which is': '金桔'})
+    result = ''
 
-#     return JSONResponse({'result': str(prediction), result})
+    if str(prediction) == 0:
+        result = '檸檬'
+    elif str(prediction) == 1:
+        result = '柑'
+    elif str(prediction) == 2:
+        result = '葡萄柚'
+    elif str(prediction) == 3:
+        result = '柳丁'
+    else:
+        result = '金桔'
+
+        
+    return JSONResponse({'result': result})
     
+#     return JSONResponse({'result': str(prediction)})
 # print('which is ',result)
 
 
