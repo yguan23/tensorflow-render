@@ -99,17 +99,17 @@ async def analyze(request):
 #     return JSONResponse({'result': img['label_list']})
 
     if str(prediction) == 0:
-        result == '檸檬'
+        result = '檸檬'
     elif str(prediction) == 1:
-        result == '柑'
+        result = '柑'
     elif str(prediction) == 2:
-        result == '葡萄柚'
+        result = '葡萄柚'
     elif str(prediction) == 3:
-        result == '柳丁'
+        result = '柳丁'
     else:
-        result == '金桔'
+        result = '金桔'
 
-    return JSONResponse({'result': str(prediction) + result})
+    return JSONResponse({'result': str(prediction), result})
     
 # print('which is ',result)
 
