@@ -22,7 +22,7 @@ model_config_name = 'app/models/model.config'
 model_file_name = 'app/models/best_model.h5'
 
 classes = ['0', '1', '2', '3', '4']
-result = ''
+# result = ''
 # classes = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
 path = Path(__file__).parent
 # data_list["label"] = classes["label_name"].map(class_map)
@@ -99,20 +99,20 @@ async def analyze(request):
 #     return JSONResponse({'result': img['label_list']})
 
     if str(prediction) == 0:
-        result = '檸檬'
-        return JSONResponse({'result': str(prediction), 'which is': result})
+#         result = '檸檬'
+        return JSONResponse({'result': str(prediction), 'which is': '檸檬'})
     elif str(prediction) == 1:
-        result = '柑'
-        return JSONResponse({'result': str(prediction), 'which is': result})
+#         result = '柑'
+        return JSONResponse({'result': str(prediction), 'which is': '柑'})
     elif str(prediction) == 2:
-        result = '葡萄柚'
-        return JSONResponse({'result': str(prediction), 'which is': result})
+#         result = '葡萄柚'
+        return JSONResponse({'result': str(prediction), 'which is': '葡萄柚'})
     elif str(prediction) == 3:
-        result = '柳丁'
-        return JSONResponse({'result': str(prediction), 'which is': result})
+#         result = '柳丁'
+        return JSONResponse({'result': str(prediction), 'which is': '柳丁'})
     else:
-        result = '金桔'
-        return JSONResponse({'result': str(prediction), 'which is': result})
+#         result = '金桔'
+        return JSONResponse({'result': str(prediction), 'which is': '金桔'})
 
 #     return JSONResponse({'result': str(prediction), result})
     
