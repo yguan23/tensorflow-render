@@ -93,16 +93,16 @@ async def analyze(request):
 
     result = ''
 
-    if str(prediction) == 0:
+    if prediction == 0:
         result = '0 which is 檸檬'
         return JSONResponse({'result': result})
-    elif str(prediction) == 1:
+    elif prediction == 1:
         result = '1 which is 柑'
         return JSONResponse({'result': result})
-    elif str(prediction) == 2:
+    elif prediction == 2:
         result = '2 which is 葡萄柚'
         return JSONResponse({'result': result})
-    elif str(prediction) == 3:
+    elif prediction == 3:
         result = '3 which is 柳丁'
         return JSONResponse({'result': result})
     else:
