@@ -90,30 +90,22 @@ async def analyze(request):
     img = preprocess_input( np.array([img]) )
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
-    
-#     data_list = pd.DataFrame({"img_path":img_list, "label_name":data_label, "types":data_types})
-#     img['label_list'] = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
-#     img['label_list'] = str(prediction).map(img)
-#     return JSONResponse({'result': img['label_list']})
 
     result = ''
 
     if str(prediction) == 0:
-        result = '檸檬'
+        result = '0 which is 檸檬'
     elif str(prediction) == 1:
-        result = '柑'
+        result = '1 which is 柑'
     elif str(prediction) == 2:
-        result = '葡萄柚'
+        result = '2 which is 葡萄柚'
     elif str(prediction) == 3:
-        result = '柳丁'
+        result = '3 which is 柳丁'
     else:
-        result = '金桔'
-
+        result = '4 which is 金桔'
         
     return JSONResponse({'result': result})
     
-#     return JSONResponse({'result': str(prediction)})
-# print('which is ',result)
 
 
 if __name__ == '__main__':
