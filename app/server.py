@@ -22,6 +22,7 @@ model_config_name = 'app/models/model.config'
 model_file_name = 'app/models/best_model.h5'
 
 classes = ['0', '1', '2', '3', '4']
+result = ''
 # classes = ['檸檬', '柑', '葡萄柚', '柳丁', '金桔']
 path = Path(__file__).parent
 # data_list["label"] = classes["label_name"].map(class_map)
@@ -98,7 +99,7 @@ async def analyze(request):
 #     img['label_list'] = str(prediction).map(img)
 #     return JSONResponse({'result': img['label_list']})
 
-    str result = ''
+
     
     if str(prediction) == 0:
         result == '檸檬'
