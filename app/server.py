@@ -100,21 +100,16 @@ async def analyze(request):
 
     if str(prediction) == 0:
         result == '檸檬'
-        print('which is ',result)
     elif str(prediction) == 1:
         result == '柑'
-        print('which is ',result)
     elif str(prediction) == 2:
         result == '葡萄柚'
-        print('which is ',result)
     elif str(prediction) == 3:
         result == '柳丁'
-        print('which is ',result)
     else:
         result == '金桔'
-        print('which is ',result)
 
-    return JSONResponse({'result': str(prediction) })
+    return JSONResponse({'result': str(prediction) + result})
     
 # print('which is ',result)
 
